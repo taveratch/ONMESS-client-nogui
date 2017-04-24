@@ -1,14 +1,13 @@
-import socketIO from 'socket.io';
+import socketIO from 'socket.io-client';
 
 class SocketController {
 	constructor(http, app) {
-		this.io = socketIO(http);
-		this.app = app;
+		this.socket = socketIO('http://localhost:3000/YMTeqkj0');
 	}
 
-	startSocket() {
-		this.io.on('connection', (socket) => {
-			console.log('a user connected');
+	fireDummy() {
+		this.socket.on('connect', () => {
+			console.log(this.socket.id);
 		});
 	}
 }
